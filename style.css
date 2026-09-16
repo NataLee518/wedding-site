@@ -163,7 +163,7 @@ img {
             rgba(35, 30, 25, 0.28),
             rgba(35, 30, 25, 0.28)
         ),
-        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2000&q=85")
+        url(/Images/main.jpg)
         center / cover;
 
     display: flex;

@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require("path");
+const fs = require("fs");
 
 dotenv.config();
 
@@ -14,8 +15,22 @@ const PORT = process.env.PORT || 3000;
    PATH TO WEBSITE
 ========================================= */
 
-const WEBSITE_PATH =
-    path.join(__dirname, "..");
+const WEBSITE_PATH = path.join(__dirname, "..");
+
+
+/* =========================================
+   RSVP STORAGE
+========================================= */
+
+const DATA_DIRECTORY = path.join(
+    __dirname,
+    "Data"
+);
+
+const RSVP_FILE = path.join(
+    DATA_DIRECTORY,
+    "rsvp.json"
+);
 
 
 /* =========================================
@@ -64,17 +79,13 @@ app.get("/", (req, res) => {
 
 app.get("/api/health", (req, res) => {
 
-    console.log(
-        "💚 Проверка API /api/health"
-    );
+    console.log("💚 Проверка API /api/health");
 
-
-    res.json({
+    res.status(200).json({
 
         success: true,
 
-        message:
-            "Server is working",
+        message: "Server is working",
 
         timestamp:
             new Date().toISOString()
@@ -96,10 +107,6 @@ app.post("/api/contact", (req, res) => {
     console.log("=================================");
 
 
-    /* =========================================
-       GET DATA
-    ========================================= */
-
     const {
         name,
         phone,
@@ -118,11 +125,10 @@ app.post("/api/contact", (req, res) => {
        VALIDATION
     ========================================= */
 
-    if (!name || !String(name).trim()) {
-
-        console.log(
-            "❌ Ошибка: отсутствует имя"
-        );
+    if (
+        !name ||
+        !String(name).trim()
+    ) {
 
         return res.status(400).json({
 
@@ -136,11 +142,10 @@ app.post("/api/contact", (req, res) => {
     }
 
 
-    if (!phone || !String(phone).trim()) {
-
-        console.log(
-            "❌ Ошибка: отсутствует телефон"
-        );
+    if (
+        !phone ||
+        !String(phone).trim()
+    ) {
 
         return res.status(400).json({
 
@@ -158,10 +163,6 @@ app.post("/api/contact", (req, res) => {
         !telegram ||
         !String(telegram).trim()
     ) {
-
-        console.log(
-            "❌ Ошибка: отсутствует Telegram"
-        );
 
         return res.status(400).json({
 
@@ -258,10 +259,6 @@ app.post("/api/contact", (req, res) => {
     console.log("");
 
 
-    /* =========================================
-       RESPONSE TO WEBSITE
-    ========================================= */
-
     return res.status(200).json({
 
         success: true,
@@ -269,26 +266,406 @@ app.post("/api/contact", (req, res) => {
         message:
             "Заявка успешно получена.",
 
-        data: {
+        data: application
 
-            name:
-                application.name,
+    });
 
-            phone:
-                application.phone,
+});
 
-            telegram:
-                application.telegram,
+
+/* =========================================
+   RSVP
+========================================= */
+
+app.post("/api/rsvp", (req, res) => {
+
+    console.log("");
+    console.log("=================================");
+    console.log("💌 ПОЛУЧЕН RSVP");
+    console.log("=================================");
+
+
+    /* =========================================
+       GET DATA
+    ========================================= */
+
+    const {
+        guestName,
+        attendance,
+        guestComment
+    } = req.body;
+
+
+    console.log(
+        "Полученные данные:",
+        req.body
+    );
+
+
+    /* =========================================
+       VALIDATION — NAME
+    ========================================= */
+
+    if (
+        !guestName ||
+        !String(guestName).trim()
+    ) {
+
+        console.log(
+            "❌ Ошибка: отсутствует имя гостя"
+        );
+
+        return res.status(400).json({
+
+            success: false,
 
             message:
-                application.message,
+                "Пожалуйста, укажите ваше имя."
+
+        });
+
+    }
+
+
+    /* =========================================
+       VALIDATION — ATTENDANCE
+    ========================================= */
+
+    if (
+        attendance !== "yes" &&
+        attendance !== "no"
+    ) {
+
+        console.log(
+            "❌ Ошибка: некорректный ответ RSVP"
+        );
+
+        return res.status(400).json({
+
+            success: false,
+
+            message:
+                "Пожалуйста, укажите, будете ли вы."
+
+        });
+
+    }
+
+
+    /* =========================================
+       CREATE DATA DIRECTORY
+    ========================================= */
+
+    try {
+
+        if (
+            !fs.existsSync(
+                DATA_DIRECTORY
+            )
+        ) {
+
+            fs.mkdirSync(
+                DATA_DIRECTORY,
+                {
+                    recursive: true
+                }
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "❌ Ошибка создания папки Data:",
+            error
+        );
+
+        return res.status(500).json({
+
+            success: false,
+
+            message:
+                "Не удалось создать хранилище RSVP."
+
+        });
+
+    }
+
+
+    /* =========================================
+       CREATE RSVP
+    ========================================= */
+
+    const rsvp = {
+
+        id:
+            Date.now().toString(),
+
+        guestName:
+            String(guestName).trim(),
+
+        attendance:
+            attendance,
+
+        guestComment:
+            guestComment
+                ? String(guestComment).trim()
+                : "",
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    /* =========================================
+       READ EXISTING RSVPs
+    ========================================= */
+
+    let rsvps = [];
+
+
+    if (
+        fs.existsSync(
+            RSVP_FILE
+        )
+    ) {
+
+        try {
+
+            const file =
+                fs.readFileSync(
+                    RSVP_FILE,
+                    "utf8"
+                );
+
+
+            if (file.trim()) {
+
+                rsvps =
+                    JSON.parse(file);
+
+            }
+
+
+            if (
+                !Array.isArray(rsvps)
+            ) {
+
+                rsvps = [];
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "❌ Ошибка чтения RSVP:",
+                error
+            );
+
+            rsvps = [];
+
+        }
+
+    }
+
+
+    /* =========================================
+       ADD NEW RSVP
+    ========================================= */
+
+    rsvps.push(rsvp);
+
+
+    /* =========================================
+       SAVE RSVP
+    ========================================= */
+
+    try {
+
+        fs.writeFileSync(
+
+            RSVP_FILE,
+
+            JSON.stringify(
+                rsvps,
+                null,
+                4
+            ),
+
+            "utf8"
+
+        );
+
+    } catch (error) {
+
+        console.error(
+            "❌ Ошибка сохранения RSVP:",
+            error
+        );
+
+        return res.status(500).json({
+
+            success: false,
+
+            message:
+                "Не удалось сохранить ответ."
+
+        });
+
+    }
+
+
+    /* =========================================
+       SERVER LOG
+    ========================================= */
+
+    console.log("");
+    console.log("=================================");
+    console.log("💌 НОВЫЙ ОТВЕТ ГОСТЯ");
+    console.log("=================================");
+
+    console.log(
+        "Имя:",
+        rsvp.guestName
+    );
+
+    console.log(
+        "Ответ:",
+        rsvp.attendance === "yes"
+            ? "БУДУ"
+            : "НЕ БУДУ"
+    );
+
+    console.log(
+        "Пожелание:",
+        rsvp.guestComment ||
+        "не указано"
+    );
+
+    console.log(
+        "Дата:",
+        rsvp.createdAt
+    );
+
+    console.log(
+        "ID:",
+        rsvp.id
+    );
+
+    console.log("=================================");
+    console.log("💾 RSVP СОХРАНЁН");
+    console.log("=================================");
+    console.log("");
+
+
+    /* =========================================
+       RESPONSE TO IVORY
+    ========================================= */
+
+    return res.status(200).json({
+
+        success: true,
+
+        message:
+            "Ваш ответ успешно сохранён.",
+
+        data: {
+
+            id:
+                rsvp.id,
+
+            guestName:
+                rsvp.guestName,
+
+            attendance:
+                rsvp.attendance,
+
+            guestComment:
+                rsvp.guestComment,
 
             createdAt:
-                application.createdAt
+                rsvp.createdAt
 
         }
 
     });
+
+});
+
+
+/* =========================================
+   GET RSVP
+========================================= */
+
+app.get("/api/rsvp", (req, res) => {
+
+    console.log(
+        "📋 Запрос списка RSVP"
+    );
+
+
+    if (
+        !fs.existsSync(
+            RSVP_FILE
+        )
+    ) {
+
+        return res.status(200).json({
+
+            success: true,
+
+            data: []
+
+        });
+
+    }
+
+
+    try {
+
+        const file =
+            fs.readFileSync(
+                RSVP_FILE,
+                "utf8"
+            );
+
+
+        const rsvps =
+            file.trim()
+                ? JSON.parse(file)
+                : [];
+
+
+        return res.status(200).json({
+
+            success: true,
+
+            data:
+                Array.isArray(rsvps)
+                    ? rsvps
+                    : []
+
+        });
+
+    } catch (error) {
+
+        console.error(
+            "❌ Ошибка чтения списка RSVP:",
+            error
+        );
+
+
+        return res.status(500).json({
+
+            success: false,
+
+            message:
+                "Не удалось получить ответы RSVP."
+
+        });
+
+    }
 
 });
 
@@ -300,9 +677,11 @@ app.post("/api/contact", (req, res) => {
 app.use((req, res) => {
 
     console.log("");
+
     console.log(
         `❌ 404: ${req.method} ${req.originalUrl}`
     );
+
 
     res.status(404).json({
 
@@ -387,6 +766,10 @@ app.listen(
 
         console.log(
             `📩 Заявки: http://localhost:${PORT}/api/contact`
+        );
+
+        console.log(
+            `💌 RSVP: http://localhost:${PORT}/api/rsvp`
         );
 
         console.log(
