@@ -16,7 +16,7 @@ html {
 
 body {
     font-family: "Montserrat", sans-serif;
-    color: #292724;
+    color: #6c675f;
     background: #f8f5ef;
     line-height: 1.7;
 }
@@ -46,7 +46,7 @@ a {
 
 :root {
 
-    --dark: #292724;
+    --dark: #8d877e;
 
     --cream: #f8f5ef;
 
@@ -54,7 +54,7 @@ a {
 
     --white: #ffffff;
 
-    --brown: #9b8065;
+    --brown: #deb892;
 
     --gray: #77736d;
 
@@ -174,8 +174,8 @@ p {
 
     background:
         linear-gradient(
-            rgba(35, 30, 25, 0.35),
-            rgba(35, 30, 25, 0.48)
+            rgba(95, 82, 69, 0.35),
+            rgba(113, 98, 82, 0.48)
         );
 
 }
@@ -415,7 +415,7 @@ p {
 
     box-shadow:
         0 30px 70px
-        rgba(0,0,0,0.1);
+        rgba(123, 122, 122, 0.1);
 
     display: flex;
 
