@@ -222,6 +222,15 @@ img {
 
     transition: 0.3s;
 }
+button1{
+    margin-top: 28px ;
+}
+button2{
+    margin-top: 28px;
+}
+button3{
+    margin-top: 75px;
+}
 
 .button-light {
     color: var(--dark);
@@ -357,8 +366,21 @@ section {
 
 .catalog-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 30px;
+}
+
+.catalog-grid .card {
+    grid-column: span 2;
+}
+
+/* Выравнивание двух карточек во втором ряду по центру */
+.catalog-grid .card:nth-child(4) {
+    grid-column: 2 / span 2;
+}
+
+.catalog-grid .card:nth-child(5) {
+    grid-column: 4 / span 2;
 }
 
 
@@ -370,6 +392,8 @@ section {
     background: var(--light);
     overflow: hidden;
     transition: 0.4s;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
@@ -484,6 +508,9 @@ section {
 
 .card-content {
     padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .card-content h3 {
@@ -509,13 +536,13 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+    margin-top: auto;
 }
 
 
 /* =========================================
    HOW
 ========================================= */
-
 .how {
     background: var(--cream);
 }
@@ -523,16 +550,25 @@ section {
 .steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
+    gap: 30px;
+    align-items: stretch; /* Растягивает все колонки сетки на одинаковую высоту */
 }
 
 .step {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%; /* Обязательно: занимает всю высоту колонки */
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .step-number {
     font-family: "Cormorant Garamond", serif;
     font-size: 60px;
+    line-height: 1;
     color: var(--accent);
     margin-bottom: 15px;
 }
@@ -541,15 +577,22 @@ section {
     font-family: "Cormorant Garamond", serif;
     font-size: 32px;
     font-weight: 500;
-    margin-bottom: 10px;
+    line-height: 1.2;
+    margin-bottom: 15px;
 }
 
 .step p {
     color: var(--gray);
-    max-width: 300px;
-    margin: auto;
+    max-width: 280px;
+    width: 100%;
+    margin-bottom: 25px;
+    font-size: 15px;
+    line-height: 1.5;
 }
 
+.step .button {
+    margin-top: auto; /* Прижимает кнопку к самому низу карточки */
+}
 
 /* =========================================
    PRICES
@@ -609,7 +652,7 @@ section {
 
 .price-card ul {
     list-style: none;
-    margin-bottom: 35px;
+    margin-bottom: 5px;
 }
 
 .price-card li {
@@ -891,6 +934,12 @@ section {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .catalog-grid .card,
+    .catalog-grid .card:nth-child(4),
+    .catalog-grid .card:nth-child(5) {
+        grid-column: span 1;
+    }
+
     .about-grid {
         grid-template-columns: 1fr;
         gap: 50px;
@@ -898,7 +947,7 @@ section {
 
     .steps {
         grid-template-columns: 1fr;
-        gap: 60px;
+        gap: 40px;
     }
 
     .price-grid {
@@ -937,6 +986,12 @@ section {
 
     .catalog-grid {
         grid-template-columns: 1fr;
+    }
+
+    .catalog-grid .card,
+    .catalog-grid .card:nth-child(4),
+    .catalog-grid .card:nth-child(5) {
+        grid-column: span 1;
     }
 
     .card-image {
@@ -1488,6 +1543,336 @@ section {
         width:
             100%;
 
+    }
+
+}
+
+
+/* =========================================
+   MOBILE — LIGHT WEDDING PALETTE
+   Desktop version is unchanged
+========================================= */
+
+@media (max-width: 600px) {
+
+    :root {
+        --dark: #4a443e;
+        --light: #fbf9f5;
+        --cream: #f5efe7;
+        --white: #ffffff;
+        --gray: #827b73;
+        --border: #e5ddd3;
+        --accent: #b39376;
+    }
+
+
+    body {
+        background: #fbf9f5;
+        color: #4a443e;
+    }
+
+
+    /* =====================================
+       HEADER
+    ===================================== */
+
+    .header {
+        background: rgba(251, 249, 245, 0.96);
+        border-bottom: 1px solid rgba(155, 128, 101, 0.12);
+        box-shadow: 0 4px 20px rgba(80, 65, 50, 0.04);
+    }
+
+    .logo {
+        color: #4a443e;
+    }
+
+    .mobile-menu-button {
+        color: #4a443e;
+    }
+
+    .mobile-menu {
+        background: #fffdf9;
+        box-shadow: 0 15px 35px rgba(80, 65, 50, 0.08);
+    }
+
+    .mobile-menu a {
+        color: #4a443e;
+        border-color: #e9e1d8;
+    }
+
+
+    /* =====================================
+       HERO
+    ===================================== */
+
+    .hero {
+        min-height: 90vh;
+
+        background:
+            linear-gradient(
+                rgba(91, 76, 62, 0.12),
+                rgba(91, 76, 62, 0.18)
+            ),
+            url(/Images/main.jpg)
+            center / cover;
+
+        color: #fffdf9;
+    }
+
+    .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(255, 248, 238, 0.04),
+                rgba(72, 58, 45, 0.12)
+            );
+        pointer-events: none;
+    }
+
+    .hero-content {
+        z-index: 2;
+    }
+
+
+    /* =====================================
+       BUTTONS
+    ===================================== */
+
+    .button-dark {
+        background: #5b5249;
+        color: #fffdf9;
+    }
+
+    .button-dark:hover {
+        background: var(--accent);
+    }
+
+    .button-outline {
+        border-color: #b8aa9b;
+        color: #665d54;
+    }
+
+    .button-outline:hover {
+        background: #665d54;
+        color: white;
+    }
+
+
+    /* =====================================
+       ABOUT
+    ===================================== */
+
+    .about {
+        background: #fbf9f5;
+    }
+
+    .about-text {
+        color: #827b73;
+    }
+
+
+    /* =====================================
+       CATALOG
+    ===================================== */
+
+    .catalog {
+        background: #fffdf9;
+    }
+
+    .filter {
+        background: #fbf9f5;
+        border-color: #e3dbd1;
+        color: #665d54;
+    }
+
+    .filter.active {
+        background: #d0b69c;
+        border-color: #d0b69c;
+        color: white;
+    }
+
+    .filter:hover {
+        background: #d0b69c;
+        border-color: #d0b69c;
+        color: white;
+    }
+
+
+    /* =====================================
+       CARDS
+    ===================================== */
+
+    .card {
+        background: #f7f2eb;
+        box-shadow: 0 8px 30px rgba(90, 72, 55, 0.05);
+    }
+
+    .card-content {
+        background: #f7f2eb;
+    }
+
+    .card-content h3 {
+        color: #514a43;
+    }
+
+    .card-info {
+        color: #898178;
+    }
+
+    .card-info strong {
+        color: #514a43;
+    }
+
+
+    /* =====================================
+       HOW
+    ===================================== */
+
+    .how {
+        background: #f2ebe2;
+    }
+
+    .step h3 {
+        color: #514a43;
+    }
+
+    .step p {
+        color: #827b73;
+    }
+
+
+    /* =====================================
+       PRICES
+    ===================================== */
+
+    .prices {
+        background: #fffdf9;
+    }
+
+    .price-card {
+        background: #fbf8f3;
+        border-color: #e4dbd1;
+    }
+
+    .price-card.popular {
+        border-color: #c7a887;
+        background: #fdf9f4;
+    }
+
+    .price-name,
+    .price {
+        color: #514a43;
+    }
+
+    .price-card > p {
+        color: #827b73;
+    }
+
+    .price-card li {
+        border-color: #e5ddd3;
+        color: #5e574f;
+    }
+
+
+    /* =====================================
+       FAQ
+    ===================================== */
+
+    .faq {
+        background: #f8f3ec;
+    }
+
+    .faq-question {
+        color: #514a43;
+    }
+
+    .faq-item {
+        border-color: #e1d8ce;
+    }
+
+    .faq-answer p {
+        color: #827b73;
+    }
+
+
+    /* =====================================
+       CONTACT
+    ===================================== */
+
+    .contact {
+        background: #f1e9df;
+    }
+
+    .contact-info h2 {
+        color: #514a43;
+    }
+
+    .contact-info p {
+        color: #827b73;
+    }
+
+    .contact-form {
+        background: #fffdf9;
+        box-shadow: 0 12px 35px rgba(80, 65, 50, 0.05);
+    }
+
+    .form-group label {
+        color: #665d54;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        color: #514a43;
+        border-color: #dfd5ca;
+    }
+
+
+    /* =====================================
+       FOOTER
+       Softer than desktop version
+    ===================================== */
+
+    .footer {
+        background: #e7ddd1;
+        color: #514a43;
+    }
+
+    .footer p {
+        color: #857b71;
+    }
+
+    .footer .logo {
+        color: #514a43;
+    }
+
+
+    /* =====================================
+       MODALS
+    ===================================== */
+
+    .modal-overlay {
+        background: rgba(86, 72, 59, 0.38);
+    }
+
+    .modal-window {
+        background: #fffdf9;
+        box-shadow: 0 25px 70px rgba(80, 65, 50, 0.15);
+    }
+
+    .contact-modal-overlay {
+        background: rgba(86, 72, 59, 0.38);
+    }
+
+    .contact-modal-window {
+        background: #fffdf9;
+        box-shadow: 0 25px 70px rgba(80, 65, 50, 0.15);
+    }
+
+    .contact-modal-title {
+        color: #514a43;
     }
 
 }
