@@ -1,1878 +1,1405 @@
-/* =========================================
-   RESET
-========================================= */
+```css
+/* ========================================= 
+   RESET 
+========================================= */ 
+ 
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+} 
+ 
+html { 
+    scroll-behavior: smooth; 
+} 
+ 
+body { 
+    font-family: "Montserrat", sans-serif; 
+    color: #242321; 
+    background: #f8f6f2; 
+    line-height: 1.6; 
+} 
+ 
+a { 
+    color: inherit; 
+    text-decoration: none; 
+} 
+ 
+button, 
+input, 
+textarea { 
+    font-family: inherit; 
+} 
+ 
+button { 
+    cursor: pointer; 
+} 
+ 
+img { 
+    max-width: 100%; 
+    display: block; 
+} 
+ 
+ 
+/* ========================================= 
+   VARIABLES 
+========================================= */ 
+ 
+:root { 
+    --dark: #242321; 
+    --light: #f8f6f2; 
+    --cream: #eee9df; 
+    --white: #ffffff; 
+    --gray: #77736c; 
+    --border: #ddd8cf; 
+    --accent: #9b8065; 
+} 
+ 
+ 
+/* ========================================= 
+   CONTAINER 
+========================================= */ 
+ 
+.container { 
+    width: min(1180px, calc(100% - 40px)); 
+    margin: 0 auto; 
+} 
+ 
+ 
+/* ========================================= 
+   HEADER 
+========================================= */ 
+ 
+.header { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 80px; 
+    background: rgba(248, 246, 242, 0.94); 
+    backdrop-filter: blur(12px); 
+    z-index: 1000; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+} 
+ 
+.header-inner { 
+    height: 100%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+} 
+ 
+.logo { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 32px; 
+    font-weight: 600; 
+    letter-spacing: 1px; 
+} 
+ 
+.logo span { 
+    color: var(--accent); 
+} 
+ 
+.nav { 
+    display: flex; 
+    gap: 35px; 
+} 
+ 
+.nav a { 
+    font-size: 12px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    transition: 0.3s; 
+} 
+ 
+.nav a:hover { 
+    color: var(--accent); 
+} 
+ 
+.mobile-menu-button { 
+    display: none; 
+    background: none; 
+    border: none; 
+    font-size: 28px; 
+} 
+ 
+ 
+/* ========================================= 
+   MOBILE MENU 
+========================================= */ 
+ 
+.mobile-menu { 
+    position: fixed; 
+    top: 80px; 
+    left: 0; 
+    width: 100%; 
+    background: var(--white); 
+    z-index: 999; 
+    display: none; 
+    flex-direction: column; 
+    padding: 20px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+} 
+ 
+.mobile-menu.open { 
+    display: flex; 
+} 
+ 
+.mobile-menu a { 
+    padding: 15px 0; 
+    border-bottom: 1px solid var(--border); 
+} 
+ 
+ 
+/* ========================================= 
+   HERO 
+========================================= */ 
+ 
+.hero { 
+    min-height: 100vh; 
+    position: relative; 
+ 
+    background: 
+        linear-gradient( 
+            rgba(35, 30, 25, 0.28), 
+            rgba(35, 30, 25, 0.28) 
+        ), 
+        url(/Images/main.jpg) 
+        center / cover; 
+ 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    color: white; 
+} 
+ 
+.hero-content { 
+    position: relative; 
+    z-index: 2; 
+    max-width: 800px; 
+    padding: 40px 20px; 
+} 
+ 
+.hero-small { 
+    font-size: 11px; 
+    letter-spacing: 4px; 
+    margin-bottom: 25px; 
+} 
+ 
+.hero h1 { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: clamp(70px, 10vw, 150px); 
+    line-height: 0.85; 
+    font-weight: 400; 
+    margin-bottom: 35px; 
+} 
+ 
+.hero p { 
+    max-width: 500px; 
+    margin: 0 auto 40px; 
+    font-size: 16px; 
+    font-weight: 300; 
+} 
+ 
+ 
+/* ========================================= 
+   BUTTONS 
+========================================= */ 
+ 
+.button { 
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center; 
+ 
+    min-height: 50px; 
+    padding: 0 28px; 
+ 
+    border: none; 
+ 
+    font-size: 11px; 
+    text-transform: uppercase; 
+    letter-spacing: 1.5px; 
+ 
+    transition: 0.3s; 
+} 
+ 
+button1 { 
+    margin-top: 28px; 
+} 
+ 
+button2 { 
+    margin-top: 28px; 
+} 
+ 
+button3 { 
+    margin-top: 75px; 
+} 
+ 
+.button-light { 
+    color: var(--dark); 
+    background: white; 
+} 
+ 
+.button-light:hover { 
+    background: var(--accent); 
+    color: white; 
+} 
+ 
+.button-dark { 
+    color: white; 
+    background: var(--dark); 
+} 
+ 
+.button-dark:hover { 
+    background: var(--accent); 
+} 
+ 
+.button-outline { 
+    background: transparent; 
+    border: 1px solid var(--dark); 
+    color: var(--dark); 
+} 
+ 
+.button-outline:hover { 
+    background: var(--dark); 
+    color: white; 
+} 
+ 
+.button-full { 
+    width: 100%; 
+} 
+ 
+ 
+/* ========================================= 
+   SECTIONS 
+========================================= */ 
+ 
+section { 
+    padding: 120px 0; 
+} 
+ 
+.section-label { 
+    font-size: 10px; 
+    letter-spacing: 3px; 
+    color: var(--accent); 
+    margin-bottom: 18px; 
+} 
+ 
+.section-heading { 
+    text-align: center; 
+    margin-bottom: 60px; 
+} 
+ 
+.section-heading h2 { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: clamp(45px, 6vw, 75px); 
+    font-weight: 400; 
+    line-height: 1; 
+    margin-bottom: 20px; 
+} 
+ 
+.section-heading p { 
+    color: var(--gray); 
+} 
+ 
+ 
+/* ========================================= 
+   ABOUT 
+========================================= */ 
+ 
+.about { 
+    background: var(--light); 
+} 
+ 
+.about-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 100px; 
+    align-items: center; 
+} 
+ 
+.about h2 { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: clamp(50px, 6vw, 80px); 
+    font-weight: 400; 
+    line-height: 0.95; 
+} 
+ 
+.about-text { 
+    font-size: 16px; 
+    color: var(--gray); 
+} 
+ 
+.about-text p { 
+    margin-bottom: 25px; 
+} 
+ 
+ 
+/* ========================================= 
+   CATALOG 
+========================================= */ 
+ 
+.catalog { 
+    background: white; 
+} 
+ 
+.filters { 
+    display: flex; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-bottom: 50px; 
+    flex-wrap: wrap; 
+} 
+ 
+.filter { 
+    padding: 12px 22px; 
+    border: 1px solid var(--border); 
+    background: transparent; 
+    font-size: 11px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+} 
+ 
+.filter.active, 
+.filter:hover { 
+    background: var(--dark); 
+    color: white; 
+    border-color: var(--dark); 
+} 
+ 
+.catalog-grid { 
+    display: grid; 
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 30px; 
+} 
+ 
+.catalog-grid .card { 
+    grid-column: span 2; 
+} 
+ 
+.catalog-grid .card:nth-child(4) { 
+    grid-column: 2 / span 2; 
+} 
+ 
+.catalog-grid .card:nth-child(5) { 
+    grid-column: 4 / span 2; 
+} 
+ 
+ 
+/* ========================================= 
+   CARD 
+========================================= */ 
+ 
+.card { 
+    background: var(--light); 
+    overflow: hidden; 
+    transition: 0.4s; 
+    display: flex; 
+    flex-direction: column; 
+} 
+ 
+.card:hover { 
+    transform: translateY(-7px); 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
+} 
+ 
+.card-image { 
+    height: 500px; 
+    position: relative; 
+    overflow: hidden; 
+ 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+} 
+ 
+.card-image::after { 
+    content: ""; 
+    position: absolute; 
+    inset: 0; 
+    background: rgba(0,0,0,0.08); 
+} 
+ 
+.image-1 { 
+    background: 
+        linear-gradient( 
+            135deg, 
+            #d8cec0, 
+            #f1ece5 
+        ); 
+} 
+ 
+.image-2 { 
+    background: 
+        linear-gradient( 
+            135deg, 
+            #b8a895, 
+            #e9ded1 
+        ); 
+} 
+ 
+.image-3 { 
+    background: 
+        linear-gradient( 
+            135deg, 
+            #687067, 
+            #c7cec5 
+        ); 
+} 
+ 
+.image-4 { 
+    background: 
+        linear-gradient( 
+            135deg, 
+            #d8b8b0, 
+            #f1ded8 
+        ); 
+} 
+ 
+.image-5 { 
+    background: 
+        linear-gradient( 
+            135deg, 
+            #eeeeeb, 
+            #cfcfc9 
+        ); 
+} 
+ 
+.image-6 { 
+    background: 
+        linear-gradient( 
+            135deg, 
+            #34383c, 
+            #747b80 
+        ); 
+} 
+ 
+.card-preview { 
+    position: relative; 
+    z-index: 2; 
+ 
+    width: 70%; 
+    height: 75%; 
+ 
+    border: 1px solid rgba(255,255,255,0.7); 
+ 
+    display: flex; 
+    flex-direction: column; 
+ 
+    align-items: center; 
+    justify-content: center; 
+ 
+    color: white; 
+ 
+    text-align: center; 
+ 
+    box-shadow: 
+        0 20px 50px rgba(0,0,0,0.12); 
+} 
+ 
+.card-preview span { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 38px; 
+} 
+ 
+.card-preview small { 
+    margin-top: 10px; 
+    font-size: 9px; 
+    letter-spacing: 3px; 
+} 
+ 
+.card-content { 
+    padding: 25px; 
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1; 
+} 
+ 
+.card-content h3 { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 30px; 
+    font-weight: 500; 
+    margin-bottom: 10px; 
+} 
+ 
+.card-info { 
+    display: flex; 
+    justify-content: space-between; 
+    color: var(--gray); 
+    font-size: 11px; 
+    margin-bottom: 20px; 
+} 
+ 
+.card-info strong { 
+    color: var(--dark); 
+} 
+ 
+.card-buttons { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px; 
+    margin-top: auto; 
+} 
+ 
+ 
+/* ========================================= 
+   HOW 
+========================================= */ 
+ 
+.how { 
+    background: var(--cream); 
+} 
+ 
+.steps { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    align-items: stretch; 
+} 
+ 
+.step { 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    height: 100%; 
+    padding: 30px 20px; 
+    background: rgba(255, 255, 255, 0.4); 
+    border: 1px solid rgba(0, 0, 0, 0.04); 
+} 
+ 
+.step-number { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 60px; 
+    line-height: 1; 
+    color: var(--accent); 
+    margin-bottom: 15px; 
+} 
+ 
+.step h3 { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 32px; 
+    font-weight: 500; 
+    line-height: 1.2; 
+    margin-bottom: 15px; 
+} 
+ 
+.step p { 
+    color: var(--gray); 
+    max-width: 280px; 
+    width: 100%; 
+    margin-bottom: 25px; 
+    font-size: 15px; 
+    line-height: 1.5; 
+} 
+ 
+.step .button { 
+    margin-top: auto; 
+} 
+ 
+ 
+/* ========================================= 
+   PRICES 
+========================================= */ 
+ 
+.prices { 
+    background: white; 
+} 
+ 
+.price-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px; 
+} 
+ 
+.price-card { 
+    position: relative; 
+    border: 1px solid var(--border); 
+    padding: 45px 35px; 
+} 
+ 
+.price-card.popular { 
+    border: 2px solid var(--accent); 
+} 
+ 
+.popular-label { 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+ 
+    padding: 8px 15px; 
+ 
+    background: var(--accent); 
+    color: white; 
+ 
+    font-size: 9px; 
+    letter-spacing: 1px; 
+} 
+ 
+.price-name { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 34px; 
+} 
+ 
+.price { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 55px; 
+    margin: 15px 0; 
+} 
+ 
+.price-card > p { 
+    color: var(--gray); 
+    font-size: 14px; 
+    margin-bottom: 30px; 
+} 
+ 
+.price-card ul { 
+    list-style: none; 
+    margin-bottom: 5px; 
+} 
+ 
+.price-card li { 
+    border-top: 1px solid var(--border); 
+    padding: 12px 0; 
+    font-size: 13px; 
+} 
+ 
+.price-card li::before { 
+    content: "✓"; 
+    color: var(--accent); 
+    margin-right: 10px; 
+} 
+ 
+ 
+/* ========================================= 
+   FAQ 
+========================================= */ 
+ 
+.faq { 
+    background: var(--light); 
+} 
+ 
+.faq-container { 
+    max-width: 850px; 
+} 
+ 
+.faq-item { 
+    border-top: 1px solid var(--border); 
+} 
+ 
+.faq-item:last-child { 
+    border-bottom: 1px solid var(--border); 
+} 
+ 
+.faq-question { 
+    width: 100%; 
+    border: none; 
+    background: none; 
+ 
+    padding: 25px 0; 
+ 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+ 
+    text-align: left; 
+ 
+    font-size: 15px; 
+} 
+ 
+.faq-question span { 
+    font-size: 25px; 
+    transition: 0.3s; 
+} 
+ 
+.faq-answer { 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: 0.4s; 
+} 
+ 
+.faq-answer p { 
+    color: var(--gray); 
+    padding-bottom: 25px; 
+} 
+ 
+.faq-item.active .faq-answer { 
+    max-height: 200px; 
+} 
+ 
+.faq-item.active .faq-question span { 
+    transform: rotate(45deg); 
+} 
+ 
+ 
+/* ========================================= 
+   CONTACT 
+========================================= */ 
+ 
+.contact { 
+    background: var(--cream); 
+} 
+ 
+.contact-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 100px; 
+} 
+ 
+.contact-info h2 { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: clamp(55px, 7vw, 90px); 
+    line-height: 0.9; 
+    font-weight: 400; 
+} 
+ 
+.contact-info p { 
+    color: var(--gray); 
+    margin-top: 30px; 
+} 
+ 
+.contact-form { 
+    background: white; 
+    padding: 45px; 
+} 
+ 
+.form-group { 
+    margin-bottom: 25px; 
+} 
+ 
+.form-group label { 
+    display: block; 
+    font-size: 10px; 
+    letter-spacing: 1px; 
+    text-transform: uppercase; 
+    margin-bottom: 10px; 
+} 
+ 
+.form-group input, 
+.form-group textarea { 
+    width: 100%; 
+ 
+    border: none; 
+    border-bottom: 1px solid var(--border); 
+ 
+    padding: 12px 0; 
+ 
+    outline: none; 
+ 
+    font-size: 14px; 
+ 
+    background: transparent; 
+ 
+    resize: vertical; 
+} 
+ 
+.form-group input:focus, 
+.form-group textarea:focus { 
+    border-color: var(--accent); 
+} 
+ 
+.form-message { 
+    margin-top: 15px; 
+    text-align: center; 
+    font-size: 13px; 
+} 
+ 
+ 
+/* ========================================= 
+   FOOTER 
+========================================= */ 
+ 
+.footer { 
+    background: var(--dark); 
+    color: white; 
+    padding: 60px 0; 
+} 
+ 
+.footer-inner { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 20px; 
+} 
+ 
+.footer p { 
+    color: #aaa; 
+    font-size: 12px; 
+} 
+ 
+ 
+/* ========================================= 
+   MODAL 
+========================================= */ 
+ 
+.modal { 
+    position: fixed; 
+    inset: 0; 
+ 
+    display: none; 
+ 
+    align-items: center; 
+    justify-content: center; 
+ 
+    z-index: 3000; 
+ 
+    padding: 20px; 
+} 
+ 
+.modal.open { 
+    display: flex; 
+} 
+ 
+.modal-overlay { 
+    position: absolute; 
+    inset: 0; 
+    background: rgba(20,18,16,0.7); 
+    backdrop-filter: blur(5px); 
+} 
+ 
+.modal-window { 
+    position: relative; 
+    z-index: 2; 
+ 
+    background: white; 
+ 
+    width: min(600px, 100%); 
+ 
+    max-height: 90vh; 
+ 
+    overflow-y: auto; 
+ 
+    padding: 50px; 
+} 
+ 
+.modal-close { 
+    position: absolute; 
+ 
+    top: 15px; 
+    right: 20px; 
+ 
+    border: none; 
+    background: none; 
+ 
+    font-size: 32px; 
+    font-weight: 300; 
+} 
+ 
+.modal-window h2 { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 45px; 
+    font-weight: 400; 
+    margin-bottom: 15px; 
+} 
+ 
+.modal-window p { 
+    color: var(--gray); 
+    margin-bottom: 30px; 
+} 
+ 
+ 
+/* ========================================= 
+   ANIMATIONS 
+========================================= */ 
+ 
+@keyframes fadeUp { 
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    } 
+ 
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+} 
+ 
+.hero-content { 
+    animation: fadeUp 1.2s ease; 
+} 
+ 
+ 
+/* ========================================= 
+   RESPONSIVE 
+========================================= */ 
+ 
+@media (max-width: 900px) { 
+ 
+    .nav { 
+        display: none; 
+    } 
+ 
+    .mobile-menu-button { 
+        display: block; 
+    } 
+ 
+    .catalog-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    } 
+ 
+    .catalog-grid .card, 
+    .catalog-grid .card:nth-child(4), 
+    .catalog-grid .card:nth-child(5) { 
+        grid-column: span 1; 
+    } 
+ 
+    .about-grid { 
+        grid-template-columns: 1fr; 
+        gap: 50px; 
+    } 
+ 
+    .steps { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+    } 
+ 
+    .price-grid { 
+        grid-template-columns: 1fr; 
+    } 
+ 
+    .contact-grid { 
+        grid-template-columns: 1fr; 
+        gap: 50px; 
+    } 
+ 
+    .footer-inner { 
+        flex-direction: column; 
+        text-align: center; 
+    } 
+} 
+ 
+ 
+@media (max-width: 600px) { 
+ 
+    section { 
+        padding: 80px 0; 
+    } 
+ 
+    .container { 
+        width: min(100% - 30px, 1180px); 
+    } 
+ 
+    .hero { 
+        min-height: 90vh; 
+    } 
+ 
+    .hero h1 { 
+        font-size: 75px; 
+    } 
+ 
+    .catalog-grid { 
+        grid-template-columns: 1fr; 
+    } 
+ 
+    .catalog-grid .card, 
+    .catalog-grid .card:nth-child(4), 
+    .catalog-grid .card:nth-child(5) { 
+        grid-column: span 1; 
+    } 
+ 
+    .card-image { 
+        height: 450px; 
+    } 
+ 
+    .contact-form { 
+        padding: 30px 20px; 
+    } 
+ 
+    .modal-window { 
+        padding: 40px 25px; 
+    } 
+} 
+ 
+ 
+/* ========================================= 
+   CHECKOUT 
+========================================= */ 
+ 
+.checkout { 
+    width: 100%; 
+} 
+ 
+.checkout-label { 
+    font-size: 10px; 
+    letter-spacing: 3px; 
+    color: var(--accent); 
+    margin-bottom: 12px; 
+} 
+ 
+.checkout h2 { 
+    margin-bottom: 25px; 
+} 
+ 
+ 
+/* PRODUCT */ 
+ 
+.checkout-product { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+ 
+    gap: 20px; 
+ 
+    padding: 20px 0; 
+ 
+    margin-bottom: 30px; 
+ 
+    border-top: 1px solid var(--border); 
+    border-bottom: 1px solid var(--border); 
+} 
+ 
+.checkout-product-label { 
+    display: block; 
+ 
+    font-size: 9px; 
+ 
+    text-transform: uppercase; 
+ 
+    letter-spacing: 1.5px; 
+ 
+    color: var(--gray); 
+ 
+    margin-bottom: 5px; 
+} 
+ 
+.checkout-product strong { 
+    display: block; 
+ 
+    font-family: "Cormorant Garamond", serif; 
+ 
+    font-size: 25px; 
+ 
+    font-weight: 500; 
+} 
+ 
+.checkout-price { 
+    white-space: nowrap; 
+ 
+    font-family: "Cormorant Garamond", serif; 
+ 
+    font-size: 30px; 
+ 
+    color: var(--accent); 
+} 
+ 
+ 
+/* FORM */ 
+ 
+.checkout-form .form-group { 
+    margin-bottom: 22px; 
+} 
+ 
+.checkout-form input { 
+    background: transparent; 
+} 
+ 
+.checkout-hint { 
+    display: block; 
+ 
+    margin-top: 7px; 
+ 
+    color: var(--gray); 
+ 
+    font-size: 10px; 
+ 
+    line-height: 1.5; 
+} 
+ 
+ 
+/* NOTE */ 
+ 
+.checkout-note { 
+    display: flex; 
+ 
+    align-items: center; 
+ 
+    gap: 12px; 
+ 
+    padding: 16px; 
+ 
+    margin: 25px 0; 
+ 
+    background: var(--light); 
+ 
+    color: var(--gray); 
+ 
+    font-size: 11px; 
+ 
+    line-height: 1.5; 
+} 
+ 
+.checkout-note-heart { 
+    flex-shrink: 0; 
+ 
+    font-family: "Cormorant Garamond", serif; 
+ 
+    font-size: 28px; 
+ 
+    color: var(--accent); 
+} 
+ 
+ 
+/* PAYMENT BUTTON */ 
+ 
+.checkout-submit { 
+    min-height: 56px; 
+ 
+    font-size: 11px; 
+ 
+    letter-spacing: 2px; 
+} 
+ 
+.checkout-submit:disabled { 
+    cursor: default; 
+ 
+    opacity: 0.65; 
+} 
+ 
+ 
+/* MESSAGE */ 
+ 
+.checkout-message { 
+    margin-top: 20px; 
+ 
+    text-align: center; 
+ 
+    font-size: 13px; 
+} 
+ 
+ 
+/* SUCCESS */ 
+ 
+.checkout-success { 
+    display: flex; 
+ 
+    flex-direction: column; 
+ 
+    align-items: center; 
+ 
+    gap: 5px; 
+ 
+    padding: 15px 0; 
+} 
+ 
+.checkout-success-heart { 
+    font-family: "Cormorant Garamond", serif; 
+ 
+    font-size: 38px; 
+ 
+    color: var(--accent); 
+ 
+    line-height: 1; 
+} 
+ 
+.checkout-success strong { 
+    font-family: "Cormorant Garamond", serif; 
+ 
+    font-size: 24px; 
+ 
+    font-weight: 500; 
+ 
+    color: var(--dark); 
+} 
+ 
+.checkout-success span { 
+    color: var(--gray); 
+ 
+    font-size: 11px; 
+} 
+ 
+ 
+/* ========================================= 
+   CHECKOUT MOBILE 
+========================================= */ 
+ 
+@media (max-width: 600px) { 
+ 
+    .checkout-product { 
+        align-items: flex-start; 
+ 
+        flex-direction: column; 
+ 
+        gap: 10px; 
+    } 
+ 
+    .checkout-price { 
+        font-size: 28px; 
+    } 
+ 
+    .checkout-note { 
+        align-items: flex-start; 
+    } 
+ 
+} 
+ 
+ 
+/* ========================================= 
+   CONTACT SUCCESS MODAL 
+========================================= */ 
+ 
+.contact-modal { 
+    position: fixed; 
+    inset: 0; 
+    z-index: 9999; 
+    display: none; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 25px; 
+} 
+ 
+.contact-modal.open { 
+    display: flex; 
+    animation: contactModalFadeIn 0.35s ease both; 
+} 
+ 
+ 
+/* ========================================= 
+   OVERLAY 
+========================================= */ 
+ 
+.contact-modal-overlay { 
+    position: absolute; 
+    inset: 0; 
+    background: rgba(36, 35, 33, 0.68); 
+    backdrop-filter: blur(7px); 
+} 
+ 
+ 
+/* ========================================= 
+   WINDOW 
+========================================= */ 
+ 
+.contact-modal-window { 
+    position: relative; 
+    z-index: 2; 
+    width: min(480px, 100%); 
+    padding: 55px 45px 45px; 
+    background: var(--light); 
+    border: 1px solid rgba(155, 128, 101, 0.35); 
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25); 
+    text-align: center; 
+    animation: contactModalUp 0.45s ease both; 
+} 
+ 
+ 
+/* ========================================= 
+   HEART 
+========================================= */ 
+ 
+.contact-modal-heart { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 42px; 
+    line-height: 1; 
+    color: var(--accent); 
+    margin-bottom: 20px; 
+} 
+ 
+ 
+/* ========================================= 
+   TITLE 
+========================================= */ 
+ 
+.contact-modal-title { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 48px; 
+    font-weight: 400; 
+    line-height: 1; 
+    color: var(--dark); 
+    margin-bottom: 20px; 
+} 
+ 
+ 
+/* ========================================= 
+   TEXT 
+========================================= */ 
+ 
+.contact-modal-text { 
+    font-family: "Cormorant Garamond", serif; 
+    font-size: 25px; 
+    line-height: 1.35; 
+    color: var(--gray); 
+    max-width: 380px; 
+    margin: 0 auto 35px; 
+} 
+ 
+ 
+/* ========================================= 
+   BUTTON 
+========================================= */ 
+ 
+.contact-modal-button { 
+    min-width: 170px; 
+    min-height: 52px; 
+    padding: 0 30px; 
+    border: 1px solid var(--dark); 
+    background: var(--dark); 
+    color: white; 
+    font-family: "Montserrat", sans-serif; 
+    font-size: 10px; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    transition: 0.3s; 
+} 
+ 
+.contact-modal-button:hover { 
+    background: var(--accent); 
+    border-color: var(--accent); 
+} 
+ 
+ 
+/* ========================================= 
+   ANIMATIONS 
+========================================= */ 
+ 
+@keyframes contactModalFadeIn { 
+    from { 
+        opacity: 0; 
+    } 
+ 
+    to { 
+        opacity: 1; 
+    } 
+} 
+ 
+@keyframes contactModalUp { 
+    from { 
+        opacity: 0; 
+        transform: translateY(25px) scale(0.97); 
+    } 
+ 
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+    } 
+} 
+ 
+ 
+/* ========================================= 
+   MOBILE 
+========================================= */ 
+ 
+@media (max-width: 600px) { 
+ 
+    .contact-modal-window { 
+        padding: 45px 25px 30px; 
+    } 
+ 
+    .contact-modal-heart { 
+        font-size: 36px; 
+    } 
+ 
+    .contact-modal-title { 
+        font-size: 40px; 
+    } 
+ 
+    .contact-modal-text { 
+        font-size: 22px; 
+    } 
+ 
+    .contact-modal-button { 
+        width: 100%; 
+    } 
+ 
+} 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Montserrat", sans-serif;
-    color: #242321;
-    background: #f8f6f2;
-    line-height: 1.6;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button,
-input,
-textarea {
-    font-family: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-
-/* =========================================
-   VARIABLES
-========================================= */
-
-:root {
-    --dark: #242321;
-    --light: #f8f6f2;
-    --cream: #eee9df;
-    --white: #ffffff;
-    --gray: #77736c;
-    --border: #ddd8cf;
-    --accent: #9b8065;
-}
-
-
-/* =========================================
-   CONTAINER
-========================================= */
-
-.container {
-    width: min(1180px, calc(100% - 40px));
-    margin: 0 auto;
-}
-
-
-/* =========================================
-   HEADER
-========================================= */
-
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    background: rgba(248, 246, 242, 0.94);
-    backdrop-filter: blur(12px);
-    z-index: 1000;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.header-inner {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 32px;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-.logo span {
-    color: var(--accent);
-}
-
-.nav {
-    display: flex;
-    gap: 35px;
-}
-
-.nav a {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s;
-}
-
-.nav a:hover {
-    color: var(--accent);
-}
-
-.mobile-menu-button {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 28px;
-}
-
-
-/* =========================================
-   MOBILE MENU
-========================================= */
-
-.mobile-menu {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background: var(--white);
-    z-index: 999;
-    display: none;
-    flex-direction: column;
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-.mobile-menu.open {
-    display: flex;
-}
-
-.mobile-menu a {
-    padding: 15px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-
-/* =========================================
-   HERO
-========================================= */
-
-.hero {
-    min-height: 100vh;
-    position: relative;
-
-    background:
-        linear-gradient(
-            rgba(35, 30, 25, 0.28),
-            rgba(35, 30, 25, 0.28)
-        ),
-        url(/Images/main.jpg)
-        center / cover;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    padding: 40px 20px;
-}
-
-.hero-small {
-    font-size: 11px;
-    letter-spacing: 4px;
-    margin-bottom: 25px;
-}
-
-.hero h1 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(70px, 10vw, 150px);
-    line-height: 0.85;
-    font-weight: 400;
-    margin-bottom: 35px;
-}
-
-.hero p {
-    max-width: 500px;
-    margin: 0 auto 40px;
-    font-size: 16px;
-    font-weight: 300;
-}
-
-
-/* =========================================
-   BUTTONS
-========================================= */
-
-.button {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-
-    min-height: 50px;
-    padding: 0 28px;
-
-    border: none;
-
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-
-    transition: 0.3s;
-}
-button1{
-    margin-top: 28px ;
-}
-button2{
-    margin-top: 28px;
-}
-button3{
-    margin-top: 75px;
-}
-
-.button-light {
-    color: var(--dark);
-    background: white;
-}
-
-.button-light:hover {
-    background: var(--accent);
-    color: white;
-}
-
-.button-dark {
-    color: white;
-    background: var(--dark);
-}
-
-.button-dark:hover {
-    background: var(--accent);
-}
-
-.button-outline {
-    background: transparent;
-    border: 1px solid var(--dark);
-    color: var(--dark);
-}
-
-.button-outline:hover {
-    background: var(--dark);
-    color: white;
-}
-
-.button-full {
-    width: 100%;
-}
-
-
-/* =========================================
-   SECTIONS
-========================================= */
-
-section {
-    padding: 120px 0;
-}
-
-.section-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: var(--accent);
-    margin-bottom: 18px;
-}
-
-.section-heading {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.section-heading h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(45px, 6vw, 75px);
-    font-weight: 400;
-    line-height: 1;
-    margin-bottom: 20px;
-}
-
-.section-heading p {
-    color: var(--gray);
-}
-
-
-/* =========================================
-   ABOUT
-========================================= */
-
-.about {
-    background: var(--light);
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    align-items: center;
-}
-
-.about h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(50px, 6vw, 80px);
-    font-weight: 400;
-    line-height: 0.95;
-}
-
-.about-text {
-    font-size: 16px;
-    color: var(--gray);
-}
-
-.about-text p {
-    margin-bottom: 25px;
-}
-
-
-/* =========================================
-   CATALOG
-========================================= */
-
-.catalog {
-    background: white;
-}
-
-.filters {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 50px;
-    flex-wrap: wrap;
-}
-
-.filter {
-    padding: 12px 22px;
-    border: 1px solid var(--border);
-    background: transparent;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.filter.active,
-.filter:hover {
-    background: var(--dark);
-    color: white;
-    border-color: var(--dark);
-}
-
-.catalog-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 30px;
-}
-
-.catalog-grid .card {
-    grid-column: span 2;
-}
-
-/* Выравнивание двух карточек во втором ряду по центру */
-.catalog-grid .card:nth-child(4) {
-    grid-column: 2 / span 2;
-}
-
-.catalog-grid .card:nth-child(5) {
-    grid-column: 4 / span 2;
-}
-
-
-/* =========================================
-   CARD
-========================================= */
-
-.card {
-    background: var(--light);
-    overflow: hidden;
-    transition: 0.4s;
-    display: flex;
-    flex-direction: column;
-}
-
-.card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-}
-
-.card-image {
-    height: 500px;
-    position: relative;
-    overflow: hidden;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.card-image::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.08);
-}
-
-.image-1 {
-    background:
-        linear-gradient(
-            135deg,
-            #d8cec0,
-            #f1ece5
-        );
-}
-
-.image-2 {
-    background:
-        linear-gradient(
-            135deg,
-            #b8a895,
-            #e9ded1
-        );
-}
-
-.image-3 {
-    background:
-        linear-gradient(
-            135deg,
-            #687067,
-            #c7cec5
-        );
-}
-
-.image-4 {
-    background:
-        linear-gradient(
-            135deg,
-            #d8b8b0,
-            #f1ded8
-        );
-}
-
-.image-5 {
-    background:
-        linear-gradient(
-            135deg,
-            #eeeeeb,
-            #cfcfc9
-        );
-}
-
-.image-6 {
-    background:
-        linear-gradient(
-            135deg,
-            #34383c,
-            #747b80
-        );
-}
-
-.card-preview {
-    position: relative;
-    z-index: 2;
-
-    width: 70%;
-    height: 75%;
-
-    border: 1px solid rgba(255,255,255,0.7);
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    color: white;
-
-    text-align: center;
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,0.12);
-}
-
-.card-preview span {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 38px;
-}
-
-.card-preview small {
-    margin-top: 10px;
-    font-size: 9px;
-    letter-spacing: 3px;
-}
-
-.card-content {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.card-content h3 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 30px;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
-
-.card-info {
-    display: flex;
-    justify-content: space-between;
-    color: var(--gray);
-    font-size: 11px;
-    margin-bottom: 20px;
-}
-
-.card-info strong {
-    color: var(--dark);
-}
-
-.card-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: auto;
-}
-
-
-/* =========================================
-   HOW
-========================================= */
-.how {
-    background: var(--cream);
-}
-
-.steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    align-items: stretch; /* Растягивает все колонки сетки на одинаковую высоту */
-}
-
-.step {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%; /* Обязательно: занимает всю высоту колонки */
-    padding: 30px 20px;
-    background: rgba(255, 255, 255, 0.4);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.step-number {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 60px;
-    line-height: 1;
-    color: var(--accent);
-    margin-bottom: 15px;
-}
-
-.step h3 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 1.2;
-    margin-bottom: 15px;
-}
-
-.step p {
-    color: var(--gray);
-    max-width: 280px;
-    width: 100%;
-    margin-bottom: 25px;
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-.step .button {
-    margin-top: auto; /* Прижимает кнопку к самому низу карточки */
-}
-
-/* =========================================
-   PRICES
-========================================= */
-
-.prices {
-    background: white;
-}
-
-.price-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
-
-.price-card {
-    position: relative;
-    border: 1px solid var(--border);
-    padding: 45px 35px;
-}
-
-.price-card.popular {
-    border: 2px solid var(--accent);
-}
-
-.popular-label {
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    padding: 8px 15px;
-
-    background: var(--accent);
-    color: white;
-
-    font-size: 9px;
-    letter-spacing: 1px;
-}
-
-.price-name {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 34px;
-    
-}
-
-.price {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 55px;
-    margin: 15px 0;
-}
-
-.price-card > p {
-    color: var(--gray);
-    font-size: 14px;
-    margin-bottom: 30px;
-}
-
-.price-card ul {
-    list-style: none;
-    margin-bottom: 5px;
-}
-
-.price-card li {
-    border-top: 1px solid var(--border);
-    padding: 12px 0;
-    font-size: 13px;
-}
-
-.price-card li::before {
-    content: "✓";
-    color: var(--accent);
-    margin-right: 10px;
-}
-
-
-/* =========================================
-   FAQ
-========================================= */
-
-.faq {
-    background: var(--light);
-}
-
-.faq-container {
-    max-width: 850px;
-}
-
-.faq-item {
-    border-top: 1px solid var(--border);
-}
-
-.faq-item:last-child {
-    border-bottom: 1px solid var(--border);
-}
-
-.faq-question {
-    width: 100%;
-    border: none;
-    background: none;
-
-    padding: 25px 0;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    text-align: left;
-
-    font-size: 15px;
-}
-
-.faq-question span {
-    font-size: 25px;
-    transition: 0.3s;
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: 0.4s;
-}
-
-.faq-answer p {
-    color: var(--gray);
-    padding-bottom: 25px;
-}
-
-.faq-item.active .faq-answer {
-    max-height: 200px;
-}
-
-.faq-item.active .faq-question span {
-    transform: rotate(45deg);
-}
-
-
-/* =========================================
-   CONTACT
-========================================= */
-
-.contact {
-    background: var(--cream);
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-}
-
-.contact-info h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(55px, 7vw, 90px);
-    line-height: 0.9;
-    font-weight: 400;
-}
-
-.contact-info p {
-    color: var(--gray);
-    margin-top: 30px;
-}
-
-.contact-form {
-    background: white;
-    padding: 45px;
-}
-
-.form-group {
-    margin-bottom: 25px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-
-    border: none;
-    border-bottom: 1px solid var(--border);
-
-    padding: 12px 0;
-
-    outline: none;
-
-    font-size: 14px;
-
-    background: transparent;
-
-    resize: vertical;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--accent);
-}
-
-.form-message {
-    margin-top: 15px;
-    text-align: center;
-    font-size: 13px;
-}
-
-
-/* =========================================
-   FOOTER
-========================================= */
-
-.footer {
-    background: var(--dark);
-    color: white;
-    padding: 60px 0;
-}
-
-.footer-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
-.footer p {
-    color: #aaa;
-    font-size: 12px;
-}
-
-
-/* =========================================
-   MODAL
-========================================= */
-
-.modal {
-    position: fixed;
-    inset: 0;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    z-index: 3000;
-
-    padding: 20px;
-}
-
-.modal.open {
-    display: flex;
-}
-
-.modal-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(20,18,16,0.7);
-    backdrop-filter: blur(5px);
-}
-
-.modal-window {
-    position: relative;
-    z-index: 2;
-
-    background: white;
-
-    width: min(600px, 100%);
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    padding: 50px;
-}
-
-.modal-close {
-    position: absolute;
-
-    top: 15px;
-    right: 20px;
-
-    border: none;
-    background: none;
-
-    font-size: 32px;
-    font-weight: 300;
-}
-
-.modal-window h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 45px;
-    font-weight: 400;
-    margin-bottom: 15px;
-}
-
-.modal-window p {
-    color: var(--gray);
-    margin-bottom: 30px;
-}
-
-
-/* =========================================
-   ANIMATIONS
-========================================= */
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-content {
-    animation: fadeUp 1.2s ease;
-}
-
-
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media (max-width: 900px) {
-
-    .nav {
-        display: none;
-    }
-
-    .mobile-menu-button {
-        display: block;
-    }
-
-    .catalog-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .catalog-grid .card,
-    .catalog-grid .card:nth-child(4),
-    .catalog-grid .card:nth-child(5) {
-        grid-column: span 1;
-    }
-
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-
-    .steps {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .price-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-
-    .footer-inner {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-
-@media (max-width: 600px) {
-
-    section {
-        padding: 80px 0;
-    }
-
-    .container {
-        width: min(100% - 30px, 1180px);
-    }
-
-    .hero {
-        min-height: 90vh;
-    }
-
-    .hero h1 {
-        font-size: 75px;
-    }
-
-    .catalog-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .catalog-grid .card,
-    .catalog-grid .card:nth-child(4),
-    .catalog-grid .card:nth-child(5) {
-        grid-column: span 1;
-    }
-
-    .card-image {
-        height: 450px;
-    }
-
-    .contact-form {
-        padding: 30px 20px;
-    }
-
-    .modal-window {
-        padding: 40px 25px;
-    }
-}
-/* =========================================
-   CHECKOUT
-========================================= */
-
-.checkout {
-    width: 100%;
-}
-
-.checkout-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: var(--accent);
-    margin-bottom: 12px;
-}
-
-.checkout h2 {
-    margin-bottom: 25px;
-}
-
-
-/* PRODUCT */
-
-.checkout-product {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 20px;
-
-    padding: 20px 0;
-
-    margin-bottom: 30px;
-
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-
-.checkout-product-label {
-    display: block;
-
-    font-size: 9px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 1.5px;
-
-    color: var(--gray);
-
-    margin-bottom: 5px;
-}
-
-.checkout-product strong {
-    display: block;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 25px;
-
-    font-weight: 500;
-}
-
-.checkout-price {
-    white-space: nowrap;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 30px;
-
-    color: var(--accent);
-}
-
-
-/* FORM */
-
-.checkout-form .form-group {
-    margin-bottom: 22px;
-}
-
-.checkout-form input {
-    background: transparent;
-}
-
-.checkout-hint {
-    display: block;
-
-    margin-top: 7px;
-
-    color: var(--gray);
-
-    font-size: 10px;
-
-    line-height: 1.5;
-}
-
-
-/* NOTE */
-
-.checkout-note {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 16px;
-
-    margin: 25px 0;
-
-    background: var(--light);
-
-    color: var(--gray);
-
-    font-size: 11px;
-
-    line-height: 1.5;
-}
-
-.checkout-note-heart {
-    flex-shrink: 0;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 28px;
-
-    color: var(--accent);
-}
-
-
-/* PAYMENT BUTTON */
-
-.checkout-submit {
-    min-height: 56px;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-}
-
-.checkout-submit:disabled {
-    cursor: default;
-
-    opacity: 0.65;
-}
-
-
-/* MESSAGE */
-
-.checkout-message {
-    margin-top: 20px;
-
-    text-align: center;
-
-    font-size: 13px;
-}
-
-
-/* SUCCESS */
-
-.checkout-success {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 5px;
-
-    padding: 15px 0;
-}
-
-.checkout-success-heart {
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 38px;
-
-    color: var(--accent);
-
-    line-height: 1;
-}
-
-.checkout-success strong {
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 24px;
-
-    font-weight: 500;
-
-    color: var(--dark);
-}
-
-.checkout-success span {
-    color: var(--gray);
-
-    font-size: 11px;
-}
-
-
-/* =========================================
-   CHECKOUT MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-    .checkout-product {
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        gap: 10px;
-    }
-
-    .checkout-price {
-        font-size: 28px;
-    }
-
-    .checkout-note {
-        align-items: flex-start;
-    }
-
-}
-/* =========================================
-   CONTACT SUCCESS MODAL
-========================================= */
-
-.contact-modal {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 25px;
-
-}
-
-
-.contact-modal.open {
-
-    display: flex;
-
-    animation:
-        contactModalFadeIn
-        0.35s
-        ease
-        both;
-
-}
-
-
-/* =========================================
-   OVERLAY
-========================================= */
-
-.contact-modal-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        rgba(36, 35, 33, 0.68);
-
-    backdrop-filter:
-        blur(7px);
-
-}
-
-
-/* =========================================
-   WINDOW
-========================================= */
-
-.contact-modal-window {
-
-    position: relative;
-
-    z-index: 2;
-
-    width:
-        min(
-            480px,
-            100%
-        );
-
-    padding:
-        55px 45px 45px;
-
-    background:
-        var(--light);
-
-    border:
-        1px solid
-        rgba(155, 128, 101, 0.35);
-
-    box-shadow:
-        0 30px 80px
-        rgba(0, 0, 0, 0.25);
-
-    text-align: center;
-
-    animation:
-        contactModalUp
-        0.45s
-        ease
-        both;
-
-}
-
-
-/* =========================================
-   HEART
-========================================= */
-
-.contact-modal-heart {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        42px;
-
-    line-height:
-        1;
-
-    color:
-        var(--accent);
-
-    margin-bottom:
-        20px;
-
-}
-
-
-/* =========================================
-   TITLE
-========================================= */
-
-.contact-modal-title {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        48px;
-
-    font-weight:
-        400;
-
-    line-height:
-        1;
-
-    color:
-        var(--dark);
-
-    margin-bottom:
-        20px;
-
-}
-
-
-/* =========================================
-   TEXT
-========================================= */
-
-.contact-modal-text {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        25px;
-
-    line-height:
-        1.35;
-
-    color:
-        var(--gray);
-
-    max-width:
-        380px;
-
-    margin:
-        0 auto 35px;
-
-}
-
-
-/* =========================================
-   BUTTON
-========================================= */
-
-.contact-modal-button {
-
-    min-width:
-        170px;
-
-    min-height:
-        52px;
-
-    padding:
-        0 30px;
-
-    border:
-        1px solid
-        var(--dark);
-
-    background:
-        var(--dark);
-
-    color:
-        white;
-
-    font-family:
-        "Montserrat",
-        sans-serif;
-
-    font-size:
-        10px;
-
-    text-transform:
-        uppercase;
-
-    letter-spacing:
-        2px;
-
-    transition:
-        0.3s;
-
-}
-
-
-.contact-modal-button:hover {
-
-    background:
-        var(--accent);
-
-    border-color:
-        var(--accent);
-
-}
-
-
-/* =========================================
-   ANIMATIONS
-========================================= */
-
-@keyframes contactModalFadeIn {
-
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-
-}
-
-
-@keyframes contactModalUp {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(25px)
-            scale(0.97);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-    .contact-modal-window {
-
-        padding:
-            45px 25px 30px;
-
-    }
-
-
-    .contact-modal-heart {
-
-        font-size:
-            36px;
-
-    }
-
-
-    .contact-modal-title {
-
-        font-size:
-            40px;
-
-    }
-
-
-    .contact-modal-text {
-
-        font-size:
-            22px;
-
-    }
-
-
-    .contact-modal-button {
-
-        width:
-            100%;
-
-    }
-
-}
-
-
-/* =========================================
-   MOBILE — LIGHT WEDDING PALETTE
-   Desktop version is unchanged
-========================================= */
-
-@media (max-width: 600px) {
-
-    :root {
-        --dark: #4a443e;
-        --light: #fbf9f5;
-        --cream: #f5efe7;
-        --white: #ffffff;
-        --gray: #827b73;
-        --border: #e5ddd3;
-        --accent: #b39376;
-    }
-
-
-    body {
-        background: #fbf9f5;
-        color: #4a443e;
-    }
-
-
-    /* =====================================
-       HEADER
-    ===================================== */
-
-    .header {
-        background: rgba(251, 249, 245, 0.96);
-        border-bottom: 1px solid rgba(155, 128, 101, 0.12);
-        box-shadow: 0 4px 20px rgba(80, 65, 50, 0.04);
-    }
-
-    .logo {
-        color: #4a443e;
-    }
-
-    .mobile-menu-button {
-        color: #4a443e;
-    }
-
-    .mobile-menu {
-        background: #fffdf9;
-        box-shadow: 0 15px 35px rgba(80, 65, 50, 0.08);
-    }
-
-    .mobile-menu a {
-        color: #4a443e;
-        border-color: #e9e1d8;
-    }
-
-
-    /* =====================================
-       HERO
-    ===================================== */
-
-    .hero {
-        min-height: 90vh;
-
-        background:
-            linear-gradient(
-                rgba(91, 76, 62, 0.12),
-                rgba(91, 76, 62, 0.18)
-            ),
-            url(/Images/main.jpg)
-            center / cover;
-
-        color: #fffdf9;
-    }
-
-    .hero::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-            linear-gradient(
-                to bottom,
-                rgba(255, 248, 238, 0.04),
-                rgba(72, 58, 45, 0.12)
-            );
-        pointer-events: none;
-    }
-
-    .hero-content {
-        z-index: 2;
-    }
-
-
-    /* =====================================
-       BUTTONS
-    ===================================== */
-
-    .button-dark {
-        background: #5b5249;
-        color: #fffdf9;
-    }
-
-    .button-dark:hover {
-        background: var(--accent);
-    }
-
-    .button-outline {
-        border-color: #b8aa9b;
-        color: #665d54;
-    }
-
-    .button-outline:hover {
-        background: #665d54;
-        color: white;
-    }
-
-
-    /* =====================================
-       ABOUT
-    ===================================== */
-
-    .about {
-        background: #fbf9f5;
-    }
-
-    .about-text {
-        color: #827b73;
-    }
-
-
-    /* =====================================
-       CATALOG
-    ===================================== */
-
-    .catalog {
-        background: #fffdf9;
-    }
-
-    .filter {
-        background: #fbf9f5;
-        border-color: #e3dbd1;
-        color: #665d54;
-    }
-
-    .filter.active {
-        background: #d0b69c;
-        border-color: #d0b69c;
-        color: white;
-    }
-
-    .filter:hover {
-        background: #d0b69c;
-        border-color: #d0b69c;
-        color: white;
-    }
-
-
-    /* =====================================
-       CARDS
-    ===================================== */
-
-    .card {
-        background: #f7f2eb;
-        box-shadow: 0 8px 30px rgba(90, 72, 55, 0.05);
-    }
-
-    .card-content {
-        background: #f7f2eb;
-    }
-
-    .card-content h3 {
-        color: #514a43;
-    }
-
-    .card-info {
-        color: #898178;
-    }
-
-    .card-info strong {
-        color: #514a43;
-    }
-
-
-    /* =====================================
-       HOW
-    ===================================== */
-
-    .how {
-        background: #f2ebe2;
-    }
-
-    .step h3 {
-        color: #514a43;
-    }
-
-    .step p {
-        color: #827b73;
-    }
-
-
-    /* =====================================
-       PRICES
-    ===================================== */
-
-    .prices {
-        background: #fffdf9;
-    }
-
-    .price-card {
-        background: #fbf8f3;
-        border-color: #e4dbd1;
-    }
-
-    .price-card.popular {
-        border-color: #c7a887;
-        background: #fdf9f4;
-    }
-
-    .price-name,
-    .price {
-        color: #514a43;
-    }
-
-    .price-card > p {
-        color: #827b73;
-    }
-
-    .price-card li {
-        border-color: #e5ddd3;
-        color: #5e574f;
-    }
-
-
-    /* =====================================
-       FAQ
-    ===================================== */
-
-    .faq {
-        background: #f8f3ec;
-    }
-
-    .faq-question {
-        color: #514a43;
-    }
-
-    .faq-item {
-        border-color: #e1d8ce;
-    }
-
-    .faq-answer p {
-        color: #827b73;
-    }
-
-
-    /* =====================================
-       CONTACT
-    ===================================== */
-
-    .contact {
-        background: #f1e9df;
-    }
-
-    .contact-info h2 {
-        color: #514a43;
-    }
-
-    .contact-info p {
-        color: #827b73;
-    }
-
-    .contact-form {
-        background: #fffdf9;
-        box-shadow: 0 12px 35px rgba(80, 65, 50, 0.05);
-    }
-
-    .form-group label {
-        color: #665d54;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        color: #514a43;
-        border-color: #dfd5ca;
-    }
-
-
-    /* =====================================
-       FOOTER
-       Softer than desktop version
-    ===================================== */
-
-    .footer {
-        background: #e7ddd1;
-        color: #514a43;
-    }
-
-    .footer p {
-        color: #857b71;
-    }
-
-    .footer .logo {
-        color: #514a43;
-    }
-
-
-    /* =====================================
-       MODALS
-    ===================================== */
-
-    .modal-overlay {
-        background: rgba(86, 72, 59, 0.38);
-    }
-
-    .modal-window {
-        background: #fffdf9;
-        box-shadow: 0 25px 70px rgba(80, 65, 50, 0.15);
-    }
-
-    .contact-modal-overlay {
-        background: rgba(86, 72, 59, 0.38);
-    }
-
-    .contact-modal-window {
-        background: #fffdf9;
-        box-shadow: 0 25px 70px rgba(80, 65, 50, 0.15);
-    }
-
-    .contact-modal-title {
-        color: #514a43;
-    }
-
-}
